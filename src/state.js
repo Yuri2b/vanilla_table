@@ -1,6 +1,6 @@
-export default function State() {
+export default function State(initialItems) {
 // state store ////////////////////////
-  let items = []
+  let items = initialItems || []
   let isLoading = false
   let isFailed = false
   let lastError = ''

@@ -19,7 +19,7 @@ export default function App(dataSource, columns){
   // initial render ////////////////
     initState.actionLoadData(dataSource, renderApp)
 
-  // mounted rutine ///////////////////  
+  // mounted routine ///////////////////  
     mountPoint.addEventListener('click', ({target}) => {
       if(target.dataset['appSetPage']){
         const newPage = target.dataset['appSetPage']
