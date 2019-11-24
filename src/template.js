@@ -40,7 +40,7 @@ export default function appTemplate(state, columns){
     }
 
     const alertTemplate = (state) =>
-      `<div class="uk-alert uk-alert-danger uk-margin-large">
+      `<div class="alert-wrapper uk-alert uk-alert-danger uk-margin-large">
         <p class="uk-margin-remove">Во время загрузки данных произошла ошибка:</p>
         <span class="uk-text-small">${state.lastError()}</span>
       </div>`

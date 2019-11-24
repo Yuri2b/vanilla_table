@@ -5,7 +5,7 @@ export default function State(initialItems) {
   let isFailed = false
   let lastError = ''
   let currentPage = 1
-  let perPage = 20
+  let perPage = 25
   let activeItemId = undefined
   let searchQuery = ''
   const orderBy = {
@@ -63,7 +63,7 @@ export default function State(initialItems) {
     isFailed = false
     isLoading = true
     callback(Object.assign({}, this))
-    fetch(dataSource)
+    return fetch(dataSource)
     .then(res => {
       res.json()
       .then( data => {

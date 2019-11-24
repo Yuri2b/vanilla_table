@@ -4,18 +4,25 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build-lib && mocha 'test/*.js'",
     "start": "webpack-dev-server --open",
-    "build": "webpack"
+    "build": "npm run build-lib & webpack",
+    "build-lib": "npx babel src --out-dir lib --presets @babel/preset-env --ignore src/index.js"
   },
   "author": "yurinevermind@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
     "css-loader": "^3.2.0",
+    "fetch-mock": "^8.0.0",
+    "jsdom": "^15.2.1",
     "mini-css-extract-plugin": "^0.8.0",
+    "mocha": "^6.2.2",
+    "node-fetch": "^2.6.0",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
     "webpack": "^4.41.2",
