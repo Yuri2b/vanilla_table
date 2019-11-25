@@ -1,6 +1,6 @@
 export default function State(initialItems) {
 // state store ////////////////////////
-  let items = initialItems || []
+  let items = initialItems ? convert(initialItems) : []
   let isLoading = false
   let isFailed = false
   let lastError = ''
@@ -11,6 +11,22 @@ export default function State(initialItems) {
   const orderBy = {
     column: 'id',
     order: 'asc'
+  }
+
+  function convert(data){
+    return data.map(el => {
+      let {city, state, streetAddress, zip} = el.adress
+      return {
+        id: el.id,
+        name: el.firstName,
+        surname: el.lastName,
+        email: el.email,
+        phone: el.phone,
+        description: el.description,
+        address: `${zip}, ${city} ${state}, ${streetAddress}`,
+        ...el.adress
+      }
+    })
   }
 
 // computed ////////////////////////////
@@ -67,19 +83,7 @@ export default function State(initialItems) {
     .then(res => {
       res.json()
       .then( data => {
-        items = data.map(el => {
-          let {city, state, streetAddress, zip} = el.adress
-          return {
-            id: el.id,
-            name: el.firstName,
-            surname: el.lastName,
-            email: el.email,
-            phone: el.phone,
-            description: el.description,
-            address: `${zip}, ${city} ${state}, ${streetAddress}`,
-            ...el.adress
-          }
-        })
+        items = convert(data)
         isLoading = false
         callback(Object.assign({}, this))
       })
