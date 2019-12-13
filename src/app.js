@@ -25,12 +25,12 @@ export default function App(dataSource, columns){
         const newPage = target.dataset['appSetPage']
         initState.actionSetPage(newPage, renderApp)
       }
-      else if(target.dataset['appItemId'] || (target.tagName == 'TH' && target.parentNode.dataset['appItemId'])){
+      else if(target.dataset['appItemId'] || (target.tagName == 'TD' && target.parentNode.dataset['appItemId'])){
         const newActiveItemId = target.parentNode.dataset['appItemId']
         initState.actionSetActiveItemId(newActiveItemId, renderApp)
       }
       else if(target.id == 'searchButton'){
-        const searchQuery = document.getElementById('searchInput').value
+        const searchQuery = mountPoint.querySelector('#searchInput').value
         initState.actionSetSearchQuery(searchQuery, renderApp)
       }
       else if(target.dataset['appColumn']){

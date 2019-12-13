@@ -4,7 +4,7 @@ export default function appTemplate(state, columns){
      return  state.items().map(el => 
         `<tr data-app-item-id=${el.id}>
           ${columnNames.map( clmn => {
-            return `<th>${el[clmn]}</th>` 
+            return `<td>${el[clmn]}</td>` 
           }).join('')}
         </tr>`).join('')
     }
